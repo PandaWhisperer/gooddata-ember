@@ -1,0 +1,21 @@
+{
+  "name": "GoodData Ember",
+  "version": "0.0.1",
+  "description": "Ember bindings for GoodData",
+  "authors": [
+    "Christoph Wagner <christoph.wagner@gooddata.com>"
+  ],
+  "private": true,
+  "homepage": "https://github.com/gooddata/gooddata-ember",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gooddata/gooddata-ember.git"
+  },
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "gd-sdk-js": "git@github.com:gooddata/gooddata-js.git",
+    "requirejs": "~2.1.10",
+    "ember": "~1.4.0",
+    "ember-data": "git@github.com:emberjs/data.git"
+  }
+}
