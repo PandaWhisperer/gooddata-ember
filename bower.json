@@ -6,16 +6,15 @@
     "Christoph Wagner <christoph.wagner@gooddata.com>"
   ],
   "private": true,
-  "homepage": "https://github.com/gooddata/gooddata-ember",
+  "homepage": "https://github.com/cw4gn3r/gooddata-ember",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gooddata/gooddata-ember.git"
+    "url": "https://github.com/cw4gn3r/gooddata-ember.git"
   },
   "dependencies": {
+    "requirejs": "~2.1.10",
     "jquery": "~2.0.3",
     "gd-sdk-js": "git@github.com:gooddata/gooddata-js.git",
-    "requirejs": "~2.1.10",
-    "ember": "~1.4.0",
-    "ember-data": "git@github.com:emberjs/data.git"
+    "ember": "~1.4.0"
   }
 }
