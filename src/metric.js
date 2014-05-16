@@ -1,10 +1,11 @@
 // Copyright (C) 2007-2014, GoodData(R) Corporation. All rights reserved.
 define(['gooddata', 'ember'], function(gooddata, Ember) {
+    'use strict';
 
     /**
      * Metric class
      */
-    App.Metric = App.Metadata.extend({
+    Metric = App.Metadata.extend({
         type: 'metric',
 
         dashboards: function() {
@@ -14,5 +15,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
             }
         }.property('usedBy')
     });
+
+    return Metric;
 
 });

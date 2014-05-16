@@ -1,10 +1,11 @@
 // Copyright (C) 2007-2014, GoodData(R) Corporation. All rights reserved.
 define(['gooddata', 'ember'], function(gooddata, Ember) {
+    'use strict';
 
     /**
      * Project class
      */
-    App.Project = App.Metadata.extend({
+    Project = App.Metadata.extend({
         type: 'project',
 
         id: function() {
@@ -57,7 +58,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
     /*
      * Static methods for Project class
      */
-    App.Project.reopenClass({
+    Project.reopenClass({
         /**
          * Overloads App.Metadata.load with support for project ids
          *
@@ -75,5 +76,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
             return this._super(uri);
         }
     });
+
+    return Project;
 
 });

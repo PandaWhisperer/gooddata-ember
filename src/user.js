@@ -1,10 +1,11 @@
 // Copyright (C) 2007-2014, GoodData(R) Corporation. All rights reserved.
 define(['gooddata', 'ember'], function(gooddata, Ember) {
+    'use strict';
 
     /**
      * User class
      */
-    App.User = App.Metadata.extend({
+    User = App.Metadata.extend({
         type: 'accountSetting',
 
         projects: function() {
@@ -44,7 +45,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
         }
     });
 
-    App.User.reopenClass({
+    User.reopenClass({
         /**
          * Loads the currently logged in user
          *
@@ -55,5 +56,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
             return this.load('/gdc/account/profile/current');
         }
     });
+
+    return User;
 
 });

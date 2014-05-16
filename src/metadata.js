@@ -1,10 +1,11 @@
 // Copyright (C) 2007-2014, GoodData(R) Corporation. All rights reserved.
 define(['gooddata', 'ember'], function(gooddata, Ember) {
+    'use strict';
 
     /**
      * Abstract base class for platform metadata
      */
-    App.Metadata = Ember.Object.extend({
+    Metadata = Ember.Object.extend({
         type: Ember.required(),
 
         // Metadata classes store their uri in different properties depending on the type.
@@ -116,7 +117,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
     /*
      * Static methods for metadata class
      */
-    App.Metadata.reopenClass({
+    Metadata.reopenClass({
         /**
          * Create a metadata object by loading it from the given uri.
          *
@@ -150,5 +151,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
             });
         }
     });
+
+    return Metadata;
 
 });
