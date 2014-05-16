@@ -1,6 +1,6 @@
 {
   "name": "gooddata-ember",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Christoph Wagner <christoph.wagner@gooddata.com>",
   "description": "GoodData Ember binding",
   "license": "Copyright (c) 2014, GoodData Corporation (BSD License)",
@@ -17,6 +17,8 @@
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-requirejs": "~0.4.1",
     "grunt-contrib-concat": "~0.4.0",
-    "grunt-contrib-uglify": "~0.4.0"
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-bump": "0.0.13",
+    "async": "~0.2.10"
   }
 }
