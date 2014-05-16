@@ -1,16 +1,79 @@
 // Copyright (C) 2007-2014, GoodData(R) Corporation. All rights reserved.
-define(['gooddata', 'ember', 'ember-data'], function(gooddata, Ember, DS) {
+define(['gooddata', 'ember'], function(gooddata, Ember) {
 
-    var attr = DS.attr;
+    /**
+     * Project class
+     */
+    App.Project = App.Metadata.extend({
+        type: 'project',
 
-    Project = DS.Model.extend({
-        title:   attr('string'),  // Project Title
-        summary: attr('string'),  // Project summary
-        roles:   attr('string'),  // User's role in the Project
-        created: attr('date'),    // Date of project creation
-        updated: attr('date'),    // Date of project update
-        author:  attr('string')   // Project creator account
+        id: function() {
+            var uri = this.get('uri');
+
+            if (uri) {
+                var parts = uri.split('/');
+                return parts[parts.length - 1];
+            }
+        }.property('uri'),
+
+        metrics: function() {
+            var self = this;
+
+            return this.getMetrics().then(function(metrics) {
+                self.set('metrics', metrics);
+                return metrics;
+            });
+        }.property(),
+
+        /**
+         * Loads all metrics for the project.
+         *
+         * @method getMetrics
+         *
+         * @return {Ember.RSVP.Promise} Promise resolving to an array of metrics
+         */
+        getMetrics: function() {
+            var md = this.get('links.metadata');
+
+            return new Ember.RSVP.Promise(function(resolve, reject) {
+                if (md) {
+                    gooddata.xhr.get(md + '/query/metrics').then(function(result) {
+                        if (result && result.query && result.query.entries) {
+                            var metrics = result.query.entries.map(function(metric) {
+                                return App.Metric.create({ meta: metric });
+                            });
+                            resolve(metrics);
+                        }
+                    }, function(error) {
+                        reject(error);
+                    });
+                } else {
+                    throw "Error: could not find metadata link";
+                }
+            });
+        }
     });
 
-    return Project;
+    /*
+     * Static methods for Project class
+     */
+    App.Project.reopenClass({
+        /**
+         * Overloads App.Metadata.load with support for project ids
+         *
+         * @param {String} uri_or_id A project uri or project id
+         * @return {Ember.RSVP.Promise} Promise resolving to the requested project
+         */
+        load: function(uri_or_id) {
+            var uri = uri_or_id;
+
+            // check if we got a uri or an id
+            if (uri && uri.indexOf('/') == -1) {
+                uri = '/gdc/projects/' + uri;
+            }
+
+            return this._super(uri);
+        }
+    });
+
 });
