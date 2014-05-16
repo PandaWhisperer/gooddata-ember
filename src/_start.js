@@ -6,7 +6,7 @@
     // CommonJS
     module.exports = factory();
   } else {
-    // Browser Global (gooddata is out global library identifier)
-    window.gooddata = factory();
+    // Browser Global (gooddata_ember is our global library identifier)
+    window.gooddata_ember = factory();
   }
 }(this, function() {

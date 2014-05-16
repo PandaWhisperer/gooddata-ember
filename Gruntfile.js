@@ -16,12 +16,11 @@ module.exports = function(grunt) {
                     name: '<%= pkg.name %>',
                     out: 'dist/<%= pkg.name %>-tmp.js',
                     paths: {
-                        'loader': '../lib/tildeio/loader',
                         'gooddata': '../bower_components/gooddata/gooddata',
                         'ember': '../bower_components/ember/ember'
                     },
                     wrap: {
-                        startFile: 'src/_start.js',
+                        startFile: ['src/_start.js', 'src/loader.js'],
                         endFile: 'src/_end.js'
                     },
                     include: ['gooddata-ember'],
@@ -58,7 +57,7 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            all: ['Gruntfile.js', '*.js', 'src/*.js', 'test/*.js', '!src/_start.js', '!src/_end.js']
+            all: ['Gruntfile.js', '*.js', 'src/*.js', 'test/*.js', '!src/_start.js', '!src/_end.js', '!src/loader.js']
         },
 
         bump: {
