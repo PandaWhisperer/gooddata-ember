@@ -1,8 +1,9 @@
 {
   "name": "gooddata-ember",
   "version": "0.0.1",
-  "author": "GoodData",
+  "author": "Christoph Wagner <christoph.wagner@gooddata.com>",
   "description": "GoodData Ember binding",
+  "license": "Copyright (c) 2014, GoodData Corporation (BSD License)",
   "repository": {
     "type": "git",
     "url": "https://github.com/gooddata/gooddata-ember.git"
