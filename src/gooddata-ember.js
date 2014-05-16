@@ -20,5 +20,6 @@ define([
         User: User,
         Project: Project,
         Metric: Metric
-    }
+    };
+
 });

@@ -27,7 +27,7 @@ define(['gooddata', 'ember'], function(gooddata, Ember) {
             return this.getUsedBy().then(function(usedBy) {
                 // figure out whether object is actually used
                 // and cache result
-                if (usedBy.nodes.length == 0) {
+                if (usedBy.nodes.length === 0) {
                     usedBy.isUsed = false;
                 } else {
                     usedBy.isUsed = true;
