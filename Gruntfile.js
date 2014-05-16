@@ -59,6 +59,20 @@ module.exports = function(grunt) {
 
         jshint: {
             all: ['Gruntfile.js', '*.js', 'src/*.js', 'test/*.js', '!src/_start.js', '!src/_end.js']
+        },
+
+        bump: {
+            options: {
+                files: ['package.json', 'bower.json'],
+                updateConfigs: ['pkg'], // for a proper banner in disted file
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['package.json', 'bower.json'],
+                createTag: true,
+                tagName: 'v%VERSION%',
+                push: true,
+                pushTo: 'origin'
+            }
         }
     });
 
@@ -66,6 +80,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-bump');
+
+    grunt.loadTasks('tools/tasks/');
 
     grunt.registerTask('default', ['dist']);
 
@@ -78,22 +95,11 @@ module.exports = function(grunt) {
         'clean'
     ]);
 
-    grunt.registerTask('clean', 'Clean dist', function() {
-        grunt.file['delete']('dist/gooddata-ember-tmp.js');
-    });
+    grunt.registerTask('release', [
+        'bump',
+        'init-bower-repo',
+        'dist',
+        'release-bower-component'
+    ]);
 
-    grunt.registerTask('getGitInfo', 'Get latest commit hash', function() {
-        var done = this.async();
-
-        var child = grunt.util.spawn({
-            cmd: 'git',
-            args: ['log', '-1', '--format="%h"']
-        }, function callback(err, result, code) {
-            grunt.config.set('gitInfo', result.stdout);
-            done(!code);
-        });
-
-        child.stdout.pipe(process.stdout);
-        child.stderr.pipe(process.stderr);
-    });
 };
