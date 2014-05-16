@@ -1,5 +1,5 @@
 {
-  "name": "GoodData Ember",
+  "name": "gooddata-ember",
   "version": "0.0.2",
   "homepage": "https://github.com/cw4gn3r/gooddata-ember",
   "license": "Copyright (c) 2014, GoodData Corporation (BSD License)",
@@ -11,7 +11,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/cw4gn3r/bower-gooddata-ember.git"
+    "url": "git@github.com:cw4gn3r/bower-gooddata-ember.git"
   },
   "dependencies": {
     "gooddata": "git@github.com:gooddata/bower-gooddata-js.git#v0.0.13",
